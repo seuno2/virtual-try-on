@@ -11,9 +11,8 @@ import boto3
 from PIL import Image
 
 from src.model import VTryOnModel
-from src import preprocessor, upload
+from src import preprocessor, storage
 from config.config import opt
-
 
 
 logging.basicConfig(filename='error.log', level=logging.DEBUG)
@@ -34,13 +33,7 @@ async def generate_img(cloth_path, person_path, output_path, job_id):
     vton.infer(c_tensor, e_tensor, p_tensor, job_id)
     
     #Upload images to NCP Object Storage
-    object_name = job_id + "/"
-    s3.put_object(Bucket="vton-storage", Key=object_name)
-    
-    s3.upload_file(cloth_path, bucket_name, object_name + cloth_path.split("/")[-1]) 
-    s3.upload_file(edge_path, bucket_name, object_name + edge_path.split("/")[-1])
-    s3.upload_file(person_path, bucket_name, object_name + person_path.split("/")[-1])
-    s3.upload_file(output_path, bucket_name, object_name + output_path.split("/")[-1])
+    storage.upload_images(s3, bucket_name, job_id + "/", cloth_path, edge_path, person_path, output_path)
 
 
 @app.post("/upload-images")
