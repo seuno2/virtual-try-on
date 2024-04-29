@@ -1,8 +1,7 @@
 
 # Virtual Try-On Web App
 
-![image](https://github.com/seuno2/virtual-try-on/assets/121914727/e50a30e1-6354-4bd1-8332-c60bd0a542d9)
-
+![image](https://github.com/seuno2/virtual-try-on/assets/121914727/3fdf576b-85e2-4b72-8bd4-a4f4f9f8a10d)
 
 
 [[Checkpoints for Test]](https://drive.google.com/file/d/1_a0AiN8Y_d_9TNDhHIcRlERz3zptyYWV/view?usp=sharing)
